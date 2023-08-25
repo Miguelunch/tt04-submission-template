@@ -308,6 +308,160 @@ Cabe recalcar que la salida Q del Flip-Flop A es el bit más significativo del c
 
 ![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/6a685855-b858-457b-b527-599aac34dd70)
 
+# Multiplexor
+
+https://wokwi.com/projects/373078293675098113 
+
+Como último dispositivo por ver es el Multiplexor 4 a 1, ya que este mismo permitirá al usuario cambiar entre las diferentes opciones de la Calculadora Binaria de 3 bits cada vez que se introduzca una combinación de bits en las entradas del Multiplexor.
+La tabla de verdad del Multiplexor 4 a 1 es la siguiente:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/40f3f526-5f88-4fe8-bed8-8c8f052445cf)
+
+Por lo tanto, el diagrama de conexión es el siguiente:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/d456ccf5-82f3-42bb-b2a9-8c49374cf3f1)
+
+Para usarse de la manera correcta en cada una de las operaciones de la calculadora y poder cambiar entre opciones, se debe de agregar una compuerta AND en cada una de las salidas de cada operación e ir conectada a su correspondiente salida del Multiplexor. Por ejemplo, para que la función de Suma de la calculadora funcione, cada una de sus salidas “S” debe de estar conectada a una compuerta AND (a una de sus entradas), la otra entrada de la compuerta AND debe de estar conectada a su combinación correspondiente del Multiplexor. 
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/ff08e938-6156-4bb8-b21a-258811bc40cd)
+
+Como se puede apreciar, ahora las salidas de las compuertas AND toman el lugar de las salidas “S” del sumador. Se repite este mismo procedimiento con cada una de las operaciones y se tiene la calculadora armada.
+
+# Uso del Circuito y Ejemplos
+
+## Entrada de datos
+
+Para poder ingresar los bits de entrada de la calculadora se utilizará un Dip Switch con 8 entradas de datos.
+•	Las primeras 3 entradas corresponden al primer número “A” conformado por A0, A1 y A2, el cual A0 es el bit de menor valor y A2 es el bit de mayor valor.
+•	Las siguientes 3 entradas corresponden al segundo número “B” conformado por B0, B1 y B2, el cual B0 es el bit de menor valor y B2 es el bit de mayor valor.
+•	Las últimas 2 entradas corresponden al Multiplexor, el cual permitirá cambiar entre las 4 distintas opciones de la calculadora, donde SW1 es el bit de menor valor y SW2 el de mayor valor.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/edf00e3d-2d82-4d7e-9533-f00d39f12381)
+
+## Señal de Reloj
+
+Para utilizar la señal de reloj se tienen dos opciones. La primera opción es usar una frecuencia de 1Hz para que envíe un flanco de subida de forma automática. La segunda opción es utilizar un push button para enviar la señal de reloj de forma manual. Para cambiar de función se tiene un switch deslizante para elegir entre estas dos opciones.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/32127444-437b-47b6-a4ba-ae4d9ebb49b7)
+
+## Salida de datos
+
+Para la salida de datos se utilizarán leds como indicadores. Cada vez que se prende un led significa que le llego un uno en binario, en caso de que esté apagado es un cero en binario. El bit de menor valor está posicionado en la parte derecha de todos los leds, mientras que el bit de mayor valor está posicionado del lado izquierdo de todos los leds.
+El único caso en el que esto cambia es en el contador, pero esto se verá más a detalle más adelante.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/a7e18df8-53dd-4abd-8aae-b57788cf2783)
+
+# Sumador
+
+Para utilizar el Sumador Binario de 3 Bits, tanto el SW1 como el SW2 deben de estar en ceros (0 0) tal y como se muestra en la imagen. Al primer sumando (A) le corresponden las primeras tres entradas de datos y al segundo sumando (B) las siguientes tres entradas de datos.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/3392ee2f-963e-4bc9-961e-d239e42862c4)
+
+## Ejemplo 1:
+•	Sumando A = 1 1 0 = 6 (decimal).
+•	Sumando B = 1 0 1 = 5 (decimal).
+•	Resultado = 1 0 1 1 = 11 (decimal).
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/9fee572c-1b56-4449-923f-f29277c37bf0)
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/6f04c077-7dc4-46f9-8fdb-61588d75052f)
+
+## Ejemplo 2:
+•	Sumando A = 1 1 1 = 7 (decimal).
+•	Sumando B = 1 1 1 = 7 (decimal).
+•	Resultado = 1 1 1 0 = 14 (decimal).
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/2c708bff-c595-4ba8-9c75-a1e1819beba8)
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/f440ac75-4ba9-4e81-ad13-9e6ee2667182)
+
+# Restador
+
+Para utilizar el Restador Binario de 3 Bits, el SW1 debe de estar activado y el SW2 debe de estar en cero (0 1) tal y como se muestra en la imagen. Al minuendo le corresponden las primeras tres entradas de datos y al sustraendo las siguientes tres entradas de datos. Se les recuerda que el bit de mayor valor es de signo, si está activado (1) significa que el valor es positivo y si está apagado (0) el resultado es negativo.
+
+## Ejemplo 1:
+•	Minuendo = 1 0 1 = 5 (decimal).
+•	Sustraendo = 0 1 0 = 2 (decimal).
+•	Resultado = 1 0 1 1 (el bit de mayor valor es el signo positivo) = 3 (decimal).
+•	Cabe recalcar que el cuarto y quinto bit de derecha a izquierda no se cuentan, pero se dejó este espacio entre bits para poder apreciar mejor el bit de signo.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/6f48a2ea-0114-4a67-8361-de40fbe30c5a)
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/a766fb63-af47-47a9-a37b-7259c440535d)
+
+## Ejemplo 2:
+•	Minuendo = 0 0 0 = 0 (decimal)
+•	Sustraendo = 1 1 1 = 7 (decimal)
+•	Resultado = 0 0 0 1 (el bit de mayor valor es el signo negativo) = -7 (decimal)
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/10f6c5bc-9156-4f5b-85fd-ad0d5defee85)
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/07b81e2c-0c3e-460f-afe5-779ee01fb45a)
+
+Como se puede apreciar en este último ejemplo, el resultado es diferente a lo esperado. El resultado que se esperaría que apareciera es el 7 negativo, o sea 0 1 1 1. Esto se debe a que el resultado mostrado se encuentra como Complemento a 2 y para pasarlo al resultado esperado se realiza la conversión a Complemento a 2 pero al revés, de la siguiente manera:
+•	El resultado obtenido fue 0 0 0 1. A este número se le debe de restar uno al bit menos significativo, por lo tanto: 0 0 0 1 – 0 0 0 1.
+•	El resultado de esta resta es 0 0 0 0. Ahora todos los bits se deben de cambiar a su inverso, o sea los ceros se cambian a uno y los unos se cambian a ceros a excepción del bit de signo.
+•	El resultado de esta inversión sería 0 1 1 1, dando como resultado el -7 en binario como normalmente se le encuentra.
+
+# Multiplicador
+Para utilizar el Multiplicador Binario de 3 Bits, el SW1 debe de estar en cero y el SW2 debe de estar en uno (1 0) tal y como se muestra en la imagen. Al primer término le corresponden las primeras tres entradas de datos y al segundo término las siguientes tres entradas de datos.
+
+## Ejemplo 1:
+
+•	Término 1 = 1 0 0 = 4 (decimal).
+•	Término 2 = 1 0 1 = 5 (decimal).
+•	Resultado = 0 1 0 1 0 0 = 20 (decimal).
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/e882c8b7-9c2c-43d7-84f2-39806ce7a949)
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/33a54657-aafd-4eab-89dd-8ca7ebb3d856)
+
+## Ejemplo 2:
+•	Término 1 = 1 1 1 = 7 (decimal).
+•	Término 2 = 1 1 1 = 7 (decimal).
+•	Resultado = 1 1 0 0 0 1 = 49 (decimal).
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/01ce30f1-f9f1-428f-b8e7-7b00e0e77dcb)
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/bd0b2e65-6042-4dac-8855-7c9c12f9961e)
+
+# Contador
+
+Para utilizar el Contador, el SW1 debe de estar en uno y el también SW2 debe de estar en uno (1 1) tal y como se muestra en la imagen. El contador realmente se compone de dos contadores; el contador de 4 bits utiliza los bits menos significativos y cuenta desde el cero al 15 en binario, mientras que el segundo contador utiliza los bits de mayor valor. Este último lo que va a hacer es ir alternando los leds en su encendido y apagado, eso quiere decir que cada vez que pase un periodo de tiempo, uno de los leds va a estar encendido y el otro apagado. Ambos contadores están conectados a la misma señal de reloj. 
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/d4538e7b-af0d-4da2-9a18-522d9506c8cc)
+
+## Ejemplo:
+
+•	Para utilizar el Contador, los switchs del Multiplexor deben de estar ambos activados (1 1).
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/10a2a602-cd8d-4514-86ab-fd529fa62d3a)
+
+•	Para activar el contador, se debe colocar en uno el primer switch.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/d0b250f8-d948-41c6-9bd7-cb00dfe52fb9)
+
+•	Hay un switch que permite usar una frecuencia de reloj preestablecida de 1Hz de frecuencia o se puede utilizar un push button como reloj y cambiar el contador a voluntad.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/2c3b95cd-0275-4e6b-8db6-1317d33ed002)
+
+•	Finalmente, el contador de 4 bits irá sumando de uno en uno hasta llegar hasta 15 en número binarios y empezar desde cero nuevamente. El contador de 2 bits irá intercalando el prendido de los leds.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/042b8ed7-93f2-47d4-8c89-395fd8866998)
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/6d72168e-fc0b-49b5-8bb9-88dca29d9de3)
+
+•	En ocasiones la simulación puede fallar y prender ambos leds del contador de 2 bits, esto debido al simulador, ya que en ocasiones puede tener algunos detalles a la hora de ejecutar algún circuito. Para solucionar esto, basta con reiniciar la simulación y se corregirá.
+
+
+
+
+
+
+
+
+
+
 
 
 
