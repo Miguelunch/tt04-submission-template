@@ -1,7 +1,7 @@
 --- 
 # TinyTapeout project information
 project:
-  wokwi_id:    0        # If using wokwi, set this to your project's ID
+  wokwi_id:    373184190141669377        # If using wokwi, set this to your project's ID
 
 # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
 # Source files must be in ./src and you must list each source file separately
@@ -21,18 +21,28 @@ yaml_version: 4
 #
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
-  author:       ""      # Your name
-  title:        ""      # Project title
+  author:       "Miguel Angel Alvarez Diaz"      # Your name
+  title:        "Calculadora Binaria de 3 Bits"      # Project title
   language:     "Wokwi" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  ""      # Short description of what your project does
+  description:  "El siguiente proyecto consiste en una Calculadora Binaria de 3 Bits conformada por 4 opciones de operaciones y/o herramientas."      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      Explain how your project works
+      Las operaciones capaces de realizar de este circuito son suma, resta y multiplicación; la cuarta opción consiste en un contador automático de 4 bits, el cual depende de una señal de reloj para cambiar el valor mostrado de forma consecutiva. Para poder desplazarse entre cada una de las distintas opciones se realizó un Multiplexor 4 a 1.
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      Explain how to test your project
+      Se tiene un dip Switch de 8 entradas. Las primeras 3 entradas (1, 2 y 3) corresponden al primer número en donde la entrada 1 es el bit menos significativo y 
+      la entrada 3 es el bit más significativo. Las siguientes 3 entradas (4, 5 y 6) corresponden al segundo número en donde la entrada 4 es es el bit menos 
+      significativo y  la entrada 6 es el bit más significativo. Las últimas 2 entradas (7  y 8) corresponden al multiplexor en donde la entrada 7 es el bit menos
+      significativo y la entrada 8 el más significativo.
+      Para usar la función de suma, las entradas del multiplexor deben de valer 0 (0 0).
+      Para usar la función de resta, las entradas del multiplexor deben de valer 1 (0 1). Las primeras 3  entradas del Switch corresponden al minuendo, las 
+      siguientes 3 entradas corresponden al sustraendo.
+      Para usar la función de multiplicación, las entradas del multiplexor deben de valer 2 (1 0).
+      Para usar la función de contador, las entradas del multiplexor deben de valer 3 (1 1). Además, la entrada 1 del Switch debe de estar activada para poder
+      utilizarse. La entrada de reloj debe de tener una frecuancia de 1Hz o se puede utilizar un boton como contador.
+      Todos los resultados se verán representados con leds en donde el led de la derecha es el menos significativo.
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
