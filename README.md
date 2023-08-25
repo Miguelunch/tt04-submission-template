@@ -1,3 +1,5 @@
+![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/wokwi_test/badge.svg)
+
 # Calculadora Binaria de 3 Bits
 
 El siguiente proyecto consiste en una Calculadora Binaria de 3 Bits conformada por 4 
@@ -32,6 +34,20 @@ denominado “C”, así como se muestra a continuación.
 
 ![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/5704eb25-dd25-475d-ae19-a41496125d4f)
 
+El carry o acarreo es el bit que se genera cuando ambas entradas (X, Y) están activadas y 
+les llegan un bit a cada uno. Se podría decir que generan un 2 en binario (1 0), por lo tanto, 
+la salida “S” no generaría un bit de salida.
+Lo que caracteriza al medio sumador de su otra variante (sumador completo) es que 
+solamente tiene dos bits de entrada y solo puede arrojar una sola salida a la vez, ya sea la 
+salida “S” o la salida carry “C”, nunca las dos al mismo tiempo, así como se muestra en su 
+tabla de verdad.
+
+Medio Sumador
+X	Y	Suma (S)	Carry (C)	Mínima Expresión Booleana
+0	0	0	0	S = (X' Y) + (X' Y) = X⊕Y
+0	1	1	0	C = X Y
+1	0	1	0	
+1	1	0	1	
 
 
 
