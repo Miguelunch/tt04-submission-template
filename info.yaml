@@ -1,6 +1,6 @@
 --- 
 # TinyTapeout project information
-project:
+project: Calculadora Binaria de 3 Bits
   wokwi_id:    373184190141669377        # If using wokwi, set this to your project's ID
 
 # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
