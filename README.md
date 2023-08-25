@@ -101,6 +101,65 @@ Finalmente, el Sumador Binario de 3 Bits quedaría de la siguiente manera en la 
 ![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/a40dea0a-58e2-4598-aae5-70994793f536)
 
 
+# Restador
+
+https://wokwi.com/projects/373085920015867905 
+
+Existe una forma de realizar un restador de una manera más sencilla a partir del circuito o diagrama de conexión de un sumador. Para este caso, se utilizará el Sumador Binario de 3 Bits para poder realizar un Restador Binario de 3 Bits. Las características del restador serán las siguientes:
+•	La resta se va a realizar entre dos valores de entrada.
+•	El minuendo (el número a restar) tendrá 3 bits de entrada.
+•	El sustraendo (el número que va a restar al minuendo) tendrá 3 bits de entrada.
+•	Los valores máximos del minuendo y sustraendo son de 7 en binario (1 1 1).
+•	Será posible obtener números negativos
+•	La salida va a tener en total 4 bits, de los cuales, el bit más significativo será el del signo.
+•	La diferencia máxima posible de resultado o salida es de -7 en binario (0 0 0 1 con complemento a 2).
+
+Para obtener el restador a partir de un sumador, basta con agregar una compuerta lógica XOR a cada una de las entradas de los bits que conforman al sustraendo; una de las patas de las compuertas XOR serán los bits de entrada del sustraendo y las otras patas de las compuertas XOR deben ir conectadas al voltaje de alimentación Vcc; el carry de entrada (Cin) del primer sumador debe de ir conectado de igual manera al voltaje de alimentación Vcc.
+Por lo tanto, el Restador Binario de 3 Bits quedaría de la siguiente manera:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/0e9113a9-586c-4945-96aa-9e9fd718238b)
+
+En donde:
+1.	X0, X1 y X2 representan el minuendo, el cual X0 es el bit de menor valor y X2 es el bit de mayor valor.
+2.	Y0, Y1 y Y2 representan el sustraendo, el cual Y0 es el bit de menor valor y Y2 es el bit de mayor valor.
+3.	Las salidas S0, S1 y S2 son los bits de salida que mostraran el resultado, en donde S0 es el bit de menor valor.
+4.	El carry del último sumador (Cout) se puede considerar como una salida como si fuera un S3, el cual será el bit de signo.
+
+Finalmente, el Restador Binario de 3 Bits quedaría de la siguiente manera en la plataforma de WOKWI:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/80b3c5a3-020d-43e7-b2a2-6be8fad3889f)
+
+# Multiplicador
+
+https://wokwi.com/projects/373066755436024833 
+
+Realizar una multiplicación entre dos bits en números binarios es realmente muy sencillo, ya que, como en una multiplicación normal, cada vez que se multiplica un número por cero el resulta seguirá siendo cero y en el caso de los bits solo tenemos dos números con los cuales trabajar, el uno y el cero.
+
+![T3](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/75b36256-4bc4-4d66-b854-a6075a24bbff)
+
+La parte laboriosa empieza cuando los números a multiplicar tienen más de un bit de entrada, ya que, al igual que una multiplicación normal, después de multiplicar los dos valores numéricos, hay un momento en la multiplicación en donde se tienen que sumar los valores previamente multiplicados.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/1fecb1e0-9bfb-4341-9d0b-272518fcc5c8)
+
+Por lo tanto, para realizar el Multiplicador Binario de 3 Bits, se va a obtener su circuito de la misma manera que la multiplicación anterior; pero para eso, es necesario utilizar tanto el medio sumador y el sumador completo para realizar la parte de la suma de bits. Las características del multiplicador serán las siguientes:
+•	La multiplicación se va a realizar entre dos valores de entrada.
+•	El primer factor tendrá 3 bits de entrada.
+•	El segundo factor tendrá 3 bits de entrada.
+•	Los valores máximos de los factores son de 7 en binario (1 1 1).
+•	La salida va a tener en total 6 bits, ya que se deben de sumar los bits de los factores de entrada para poder obtener la cantidad necesaria de bits de salida y abarcar el número más grande de multiplicación.
+•	El valor máximo posible de resultado o salida es de 49 en binario (1 1 0 0 0 1).
+
+Para realizar el Multiplicador Binario de 3 Bits, es un proceso más largo y laborioso que las operaciones anteriores, por lo tanto, se seguirán los siguientes pasos:
+1.	Se van a acomodar los dos números a multiplicar como en una multiplicación normal, de tal forma que los bits más significativos queden a la izquierda y los menos significativos a la derecha.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/fa2c1545-d6f7-4855-aa97-87b3c7d9d463)
+
+
+
+
+
+
+
 
 
 
