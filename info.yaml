@@ -28,7 +28,9 @@ documentation:
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      Las operaciones capaces de realizar de este circuito son suma, resta y multiplicación; la cuarta opción consiste en un contador automático de 4 bits, el cual depende de una señal de reloj para cambiar el valor mostrado de forma consecutiva. Para poder desplazarse entre cada una de las distintas opciones se realizó un Multiplexor 4 a 1.
+      Las operaciones capaces de realizar de este circuito son suma, resta y multiplicación; la cuarta opción consiste en un contador automático de 4 bits, 
+      el cual depende de una señal de reloj para cambiar el valor mostrado de forma consecutiva. Para poder desplazarse entre cada una de las distintas opciones 
+      se realizó un Multiplexor 4 a 1.
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
