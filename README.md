@@ -1,3 +1,49 @@
+# Calculadora Binaria de 3 Bits
+
+El siguiente proyecto consiste en una Calculadora Binaria de 3 Bits conformada por 4 
+opciones de operaciones y/o herramientas. Las operaciones capaces de realizar de este 
+circuito son suma, resta y multiplicación; la cuarta opción consiste en un contador 
+automático de 4 bits, el cual depende de una señal de reloj para cambiar el valor mostrado 
+de forma consecutiva. Para poder desplazarse entre cada una de las distintas opciones se 
+realizó un Multiplexor 4 a 1.
+
+Todo este proyecto fue desarrollado en la plataforma en línea WOKWI, en donde es posible 
+observar el circuito de forma libre e incluso simularlo para interactuar con sus funciones. La 
+idea de realizar una Calculadora Binaria de 3 Bits nació de la actividad crear un proyecto 
+propuesto por el campamento LATINPRACTICE, el cual, lo recomendable es realizarse con 
+herramientas libres de diseño VLSI, sin embargo, como algunos no poseemos una base 
+sólida de estas herramientas, se nos dio la oportunidad de crear nuestro propio circuito 
+utilizando compuertas lógicas en la plataforma de WOKWI.
+
+https://wokwi.com/projects/373184190141669377
+
+# Desarrollo del Circuito
+# Sumador
+
+https://wokwi.com/projects/373005455971337217
+
+Para poder desarrollar el sumador de 3 bits, es necesario comprender como funciona un 
+medio sumador y un sumador completo.
+
+## Medio Sumador
+El medio sumador se conforma de dos bits de entrada (X, Y) y dos bits de salida. Las 2 
+salidas posibles del medio sumador son una salida denominada “S”, y un carry o acarreo 
+denominado “C”, así como se muestra a continuación.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/5704eb25-dd25-475d-ae19-a41496125d4f)
+
+
+
+
+
+
+
+
+
+
+
+
+
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/wokwi_test/badge.svg)
 
 # What is Tiny Tapeout?
