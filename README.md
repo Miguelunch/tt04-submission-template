@@ -209,19 +209,104 @@ El Multiplicador Binario de 3 Bits quedaría de la siguiente manera en la plataf
 
 ![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/e0693c50-a743-4656-9c77-f85e0ab9a012)
 
+# Contador
 
+https://wokwi.com/projects/373174994558429185 
 
+Para este caso, se van a realizar dos contadores, los cuales van a estar trabajando de manera diferente con una misma señal de reloj. 
 
+## Contador Síncrono de 4 bits
 
+El primer contador que se realizará a continuación consiste en un contador síncrono 4 bits, esto quiere decir que va a necesitar 4 Flip-Flops de tipo D (se puede hacer con otro tipo de Flip-Flop) y será síncrono porque todos estos Flip-Flops utilizan una misma señal de reloj para poder funcionar. Las características de este primer contador serán las siguientes:
+•	Utilizará 4 Flip-Flops tipo D.
+•	Tendrá una señal de reloj automática de 1 de frecuencia o en su defecto, puede utilizar un botón como señal de reloj.
+•	Para activarse, tendrá un switch que permita el paso de la señal de reloj.
+•	Será capaz de contar de cero hasta 15 en binario (1 1 1 1) y de ahí volverá a contar desde cero.
 
+Para este caso, no será necesario utilizar la tabla de verdad del Flip-Flop de tipo D, pero lo que sí se va a requerir es su Tabla de Transición o también llamada Tabla de Excitación, de la cual se obtendrán los estados cambiantes del Flip-Flop con forme pasa un periodo de tiempo y de ahí realizar una tabla de verdad en la que se muestre como van a ir cambiando los bits de salida para obtener los números binarios en orden.
 
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/7a74b943-5720-40e9-8902-136c91e12516)
 
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/11293979-f57e-4ef5-8e71-1fa21091923e)
 
+1.	Como primer paso para realizar la tabla de verdad, se empezará haciendo una tabla donde se muestren todos los números posibles que se pueden crear con esos 4 bits de salida de los Flip-Flops, la cual se denominará Estado Actual Q(t) ya que, como su nombre lo indica, son los bits de salida previo a un cambio con forme al tiempo. A un lado se van a colocar las salidas futuras de los Flip-Flops denominada como Estado Futuro Q(t+1) y también se van a agregar la entrada de datos de cada uno de los Flip-Flops. Para identificar los Flip-Flops junto con sus entradas y salidas, se llamarán de la siguiente manera:
+•	Flip-Flop A: Entrada de datos: DA; Salida de datos: QA
+•	Flip-Flop B: Entrada de datos: DB; Salida de datos: QB
+•	Flip-Flop C: Entrada de datos: DC; Salida de datos: QC
+•	Flip-Flop D: Entrada de datos: DD; Salida de datos: QD
 
+Por lo tanto, la tabla queda de la siguiente manera:
 
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/edc96b6f-4818-4e10-b6ae-dd19d753a07d)
 
+2.	Para llenar la parte de Estado Futuro Q(t+1), es necesario fijarse en los bits del Estado Actual Q(t) y colocar el número que se desea que le suceda, por ejemplo: Se tiene el número cero (0 0 0 0) en la parte de Estado Actual Q(t) y se desea que cambie a uno (0 0 0 1), por lo tanto, en la parte de Estado Futuro Q(t+1) se colocarán los bits del número uno (0 0 0 1). Si se desea que el número once (1 0 1 1) cambié a doce, en el Estado Futuro Q(t+1) se deben de colocar los bits de ese número (1 1 0 0). Para este caso todos los números son consecutivos, entonces, la tabla queda de la siguiente manera:
 
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/2218a661-bd8a-4d7b-be59-543abb97d056)
 
+3.	Para llenar las entradas de datos “D” de los Flip-Flops es necesario utilizar la Tabla de Excitación para observar como van cambiando las salidas Q del Estado Actual Q(t) al Estado Futuro Q(t+1), por ejemplo, para llenar la primera casilla del Flip-Flop D, se tiene que observar cómo cambia QD del Estado Actual Q(t) al Estado Futuro Q(t+1). Para este primer ejemplo, se puede observar que en el Estado Actual Q(t) esta en 0 y en el Estado Futuro Q(t+1) pasa a 1, por lo tanto, la entrada de datos “D” es 0 como indica la Tabla de Excitación.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/f1c740fc-c71e-4670-9c38-1c276d26c584)
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/6904f85c-c630-40ed-b9dd-01eb070ca34c)
+
+4.	Siguiendo este método, se llenan todas las casillas de entrada de datos “D” del Flip-Flop D.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/c786bea1-8ee5-4a93-93d5-e242c0e5121e)
+
+5.	Se repite este mismo procedimiento con las otras entradas de datos de los Flip-Flops faltantes. La tabla de verdad queda de la siguiente manera:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/08613aac-b3ba-42ea-8881-e82215faff12)
+
+6.	El siguiente paso es obtener una expresión Booleana de cada entrada de datos “D”, para realizar esto, se puede utilizar Algebra Booleana o mapas de Karnaugh. Para este caso, se realizaron mapas de Karnaugh con la herramienta en línea de The Quine-McCluskey Solver. Para obtener la expresión Booleana de la entrada de datos “DD” del Flip-Flop D se utiliza todas las salidas Q del Estado Actual Q(t).
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/3a0cedbb-eda5-4031-96ab-cea132ecb02d)
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/276d3055-ca64-4c39-b85f-ac37315e575d)
+
+7.	Utilizando este método, la mínima expresión Booleana de la entrada de datos “DD” es: DD = QD'.
+
+8.	Por lo tanto, las mínimas expresiones Booleanas de cada una de las entradas de datos son las siguientes:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/63f09f58-0db5-4674-b552-3c49c69dbca5)
+
+# Contador Síncrono de 2 bits
+
+El segundo contador que se realizará a consiste en un contador síncrono 2 bits, esto quiere decir que va a necesitar 2 Flip-Flops de tipo D (se puede hacer con otro tipo de Flip-Flop) y será síncrono porque todos estos Flip-Flops utilizan una misma señal de reloj para poder funcionar. Las características de este primer contador serán las siguientes:
+•	Utilizará 2 Flip-Flops tipo D.
+•	Tendrá una señal de reloj automática de 1 de frecuencia o en su defecto, puede utilizar un botón como señal de reloj.
+•	Para activarse, tendrá un switch que permita el paso de la señal de reloj.
+•	Aunque es capaz de contar hasta 3 en binario (1 1), solamente mostrará dos valores, el uno (0 1) y el dos (1 0), simulando como si se apagaran y se encendieran dos leds de manera intercalada.
+
+Al igual que el contador anterior, se utilizará la Tabla de Excitación del Flip-Flop tipo D, de la cual se obtendrán los estados cambiantes del Flip-Flop con forme pasa un periodo de tiempo y de ahí realizar una tabla de verdad en la que se muestre como van a ir cambiando los bits de salida para obtener los números binarios.
+
+1.	Como primer paso para realizar la tabla de verdad, se empezará haciendo una tabla donde se muestren todos los números posibles que se pueden crear con esos 2 bits de salida de los Flip-Flops, la cual se denominará Estado Actual Q(t). A un lado se van a colocar las salidas futuras de los Flip-Flops denominada como Estado Futuro Q(t+1) y también se van a agregar la entrada de datos de cada uno de los Flip-Flops. Para identificar los Flip-Flops junto con sus entradas y salidas, se llamarán de la siguiente manera:
+•	Flip-Flop X: Entrada de datos: DX; Salida de datos: QX
+•	Flip-Flop Y: Entrada de datos: DY; Salida de datos: QY
+Por lo tanto, la tabla queda de la siguiente manera:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/62389a20-3593-492d-a4c8-1f68fdd8c3c0)
+
+2.	Para llenar la parte de Estado Futuro Q(t+1), es necesario fijarse en los bits del Estado Actual Q(t) y colocar el número que se desea que le suceda. Para este caso, se tiene el número uno (0 1) en la parte de Estado Actual Q(t) y se desea que cambie a dos (1 0), por lo tanto, en la parte de Estado Futuro Q(t+1) se colocarán los bits del número dos (1 0). Se tiene el número dos (1 0) en la parte de Estado Actual Q(t), y para que cambie a uno (0 1) se deben de colocar los bits de salida en la parte de Estado Futuro Q(t+1). Con estos dos cambios en la transición, se dará el efecto de que los leds parpadean de forma intercalada. La tabla queda de la siguiente manera:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/45282f04-e2ee-412c-a69d-34e067403f2e)
+
+3.	Como se puede apreciar, hay casillas vacías en la parte de Estado Futuro Q(t+1). Esas partes se van a llenar solamente con números ceros, de esta manera estos estados de transición no se ejecutarán en el resultado final.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/09960ce9-fbd4-4b37-bfd1-a61b0c098a21)
+
+4.	Al igual que el contador anterior, las entradas de datos “D” se van a llenar con la Tabla de Excitación del Flip-Flop tipo D, por lo tanto, la tabla de verdad resultante es la siguiente:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/9a287d32-f261-48a4-a0a5-67b98739eb9e)
+
+5.	El siguiente paso es obtener una expresión Booleana de cada entrada de datos “D”, para realizar esto, se puede utilizar Algebra Booleana o mapas de Karnaugh. Para este caso, se realizaron mapas de Karnaugh con la herramienta en línea de The Quine-McCluskey Solver. Se les recuerda que para obtener las expresiones Booleanas de las entradas de datos “D” se utiliza todas las salidas Q del Estado Actual Q(t).
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/9f62eb38-80d8-44b6-b01f-0f4f4d921757)
+
+## Diagrama de conexión de los contadores
+
+Cabe recalcar que la salida Q del Flip-Flop A es el bit más significativo del contador, mientras que salida Q del Flip-Flop D es el bit menos significativo. También se puede apreciar que tanto la señal de Reloj como el Switch de activación están conectados a una misma compuerta AND, esto para que los contadores se activen cuando se encienda el Switch.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/6a685855-b858-457b-b527-599aac34dd70)
 
 
 
