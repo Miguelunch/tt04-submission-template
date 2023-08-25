@@ -47,7 +47,8 @@ documentation:
       Todos los resultados se verán representados con leds en donde el led de la derecha es el menos significativo.
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
-  inputs:               
+  inputs:
+    - CLK 1 Hz
     - IN0 (switch input 1)
     - IN1 (switch input 2)
     - IN2 (switch input 3)
