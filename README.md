@@ -154,6 +154,63 @@ Para realizar el Multiplicador Binario de 3 Bits, es un proceso más largo y lab
 
 ![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/fa2c1545-d6f7-4855-aa97-87b3c7d9d463)
 
+2.	Ya que se tienen acomodados los números a multiplicar, A0 va a multiplicar todos los números de la parte superior de derecha a izquierda, como en cualquier multiplicación.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/6692b103-967a-4a5c-93e8-18d935c9a675)
+
+3.	Se repite el mismo procedimiento, pero ahora A1 multiplicará a cada uno de los términos superiores y se recorrerán los resultados obtenidos una casilla a la izquierda.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/a6540473-5326-414c-be05-a08b55999e47)
+
+
+4.	Finalmente, A2 multiplicará cada uno de los términos superiores y los resultados obtenidos se recorrerán otra casilla más a la izquierda.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/c8393d99-8524-47ec-9f57-248d921cd3e5)
+
+5.	Ya que se tienen todas las multiplicaciones, se proceden a sumar los términos en sus columnas correspondientes empezando de derecha a izquierda. Como se puede observar, A0*B0 no tiene nadie con quien sumarse, por lo tanto, el resultado de esa multiplicación se pasa directo como el resultado a mostrar, el cual se denominará S0.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/08cc3e7f-1ec8-41f3-a7ca-07fbe799d3ff)
+
+6.	Las siguientes multiplicaciones por sumar son A0*B1 con A1*B0 y, algo que hay que dejar muy en claro es que, cada vez que se cada vez que sumen dos términos, se va a utilizar un medio sumador, y también debemos de recordar que los medios sumadores solo pueden generar una salida “S” o un carry “C” nunca los dos al mismo tiempo, pero esto se comprenderá mejor más adelante. Por lo tanto, la suma entre A0*B1 con A1*B0 genera una salida S1 o un carry C0, quedando de la siguiente manera.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/bef438c8-6ceb-4932-ab90-420533d989c5)
+
+7.	Supongamos que de la suma anterior se genera el carry C0, eso quiere decir que se va a sumar con el siguiente conjunto de términos, los cuales son A0*B2, A1*B1 y A2*B0. Lo primero que se tiene que hacer es sumar el carry C0 con los primeros dos términos mencionados anteriormente, entonces se sumarían C0 con A0*B2 y con A1*B1, en esta ocasión se sumaran tres términos a la vez. También, algo que dejar muy en claro es que, cada vez que se cada vez que sumen tres términos, se va a utilizar un sumador completo, y también debemos de recordar que los sumadores completos pueden generar tanto una salida “S” y un carry “C” al mismo tiempo. Por lo tanto, la suma entre C0 con A0*B2 y con A1*B1, genera una salida R0 o un carry C1. En esta ocasión la salida se colocó como R0 (aunque puede tener el nombre que deseé el usuario) en lugar de S2 ya que todavía queda un término por sumar en este conjunto de términos (A2*B0). La suma quedaría de la siguiente manera.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/6534db31-7610-4144-a8fb-186ec55200da)
+
+8.	Como se puede observar, de la suma anterior se generaron una salida R0 y un carry C1. Por el momento se guardará y no se utilizará el carry C1 ya que, como su nombre lo indica (carry o acarreo), pasa a sumarse con el siguiente grupo de términos (A1*B2 y A2*B1), entonces, la salida R0 esta libre para utilizarse. La salida R0 se sumará con A2*B0, por lo tanto, se utilizará un medio sumador y las salidas que genera esta suma son la salida S2 ó el carry C2, quedando de la siguiente manera:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/06f6bb2c-7f00-4b25-8d56-2307948da777)
+
+9.	Como se puede observar, ahora se tienen dos carrys (C1 y C2) y ambos pasan a sumarse con el siguiente grupo de términos (A1*B2 y A2*B1), por lo tanto, se empezarán a sumar 3 términos en orden como se fueron generando. Entonces, se van a sumar C1 con C2 y con A1*B2 y la suma de estos tres términos generan una salida R1 y un carry C3.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/8ce3f450-9030-47f1-a15d-5c5f360e7ca0)
+
+10.	Nuevamente, el carry C3 se guarda para el siguiente grupo de términos (A2*B2) y la salida R1 se va a utilizar en el grupo de término actual. Por lo tanto, se van a sumar la salida R1 con A2*B1 y la suma de estos dos términos da como resultado una salida S3 o un carry C4.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/26d852ae-41a3-4ce8-abf2-d2c0c3e1b824)
+
+11.	Por segunda ocasión, se tienen dos carrys (C3 y C4) y ambos pasan a sumarse con el último grupo de términos (A2*B2). Por lo tanto, la suma de C3 con C4 y A2*B2 dan como resultado una salida S4 y un carry C5. El carry C5 pasaría al siguiente grupo de términos, pero como ya no queda nada con que sumar, pasa directamente como una salida, quedando de la siguiente manera:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/8cad16bc-6bfe-47a6-84e4-e49bb93a64fc)
+
+12.	Finalmente, el Multiplicador Binario de 3 Bits quedaría de la siguiente manera, en donde:
+•	A0, A1 y A2 representan el primer término a multiplicar, el cual A0 es el bit de menor valor y A2 es el bit de mayor valor.
+•	B0, B1 y B2 representan el segundo término a multiplicar, el cual B0 es el bit de menor valor y B2 es el bit de mayor valor.
+•	Los términos marcados de color MORADO son las multiplicaciones previas antes de pasar a los sumadores. Para eso, se utilizan compuertas AND.
+•	Los términos marcados de color ROJO son las salidas del Multiplicador. S0 es el bit de menor valor y C5 el bit de mayor valor.
+•	Las sumatorias marcadas de color AZUL son los términos que requieren un sumador completo.
+•	Las sumatorias marcadas de color VERDE son los términos que requieren un medio sumador.
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/3b03139a-8597-481c-8f51-0ba03bab3d76)
+
+El Multiplicador Binario de 3 Bits quedaría de la siguiente manera en la plataforma de WOKWI:
+
+![image](https://github.com/Miguelunch/tt04-submission-template/assets/142178685/e0693c50-a743-4656-9c77-f85e0ab9a012)
+
+
+
 
 
 
